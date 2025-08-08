@@ -1,0 +1,932 @@
+/*styles/global.css*/
+:root {
+  --light-bg: #ffffff;
+  --light-text: #333333;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --border-color: #eaeaea;
+  --dark-bg: #1a1a1a;
+  --dark-text: #f0f0f0;
+  --dark-shadow: rgba(0, 0, 0, 0.5);
+  --dark-card-bg: #2a2a2a;
+  --dark-border-color: #444;
+   --theme-color: #FF6B6B;
+}
+
+
+:root {
+  --theme-color: #FF6B6B; /* 固定主题色 */
+  --light-bg: #ffffff;
+  --light-text: #333333;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --border-color: #eaeaea;
+  --dark-bg: #1a1a1a;
+  --dark-text: #f0f0f0;
+  --dark-shadow: rgba(0, 0, 0, 0.5);
+  --dark-card-bg: #2a2a2a;
+  --dark-border-color: #444;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+}
+
+/* 黑暗模式 */
+html.dark-mode {
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+  --shadow-color: var(--dark-shadow);
+  --card-bg: var(--dark-card-bg);
+  --border-color: var(--dark-border-color);
+  --secondary-text: #aaa;
+  --tag-bg: #444;
+  --tag-text: #eee;
+}
+
+/* 明亮模式 */
+html:not(.dark-mode) {
+  --bg-color: var(--light-bg);
+  --text-color: var(--light-text);
+  --shadow-color: var(--light-shadow);
+  --card-bg: var(--light-bg);
+  --border-color: #eaeaea;
+  --secondary-text: #666;
+  --tag-bg: #f0f0f0;
+  --tag-text: #333;
+}
+
+
+
+
+/*主要内容,每个页面都用*/
+.main-content {
+  padding:20px 40px;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  z-index: 99;
+  position: relative;
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.home-button{
+  color: var(--text-color);
+  margin: 0 20px;
+  padding: 0;
+  width: 150px;
+}
+
+
+/*主页面对话区*/
+.ichat {
+    width: 100%;
+  height: 5vh;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ichat.expanded {
+  width: 100%;
+  height: 100vh;
+}
+
+.ichat-header {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: #1a1a1a98;
+  color: #ffffffca;
+
+}
+.ichat-header button{
+    font-size: 10px;
+}
+/* 聊天对话框容器 */
+.chat-dialog {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+ justify-content: space-between;
+}
+
+/* 消息容器 */
+.messages-container {
+width: 50%;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+    overflow-y: scroll;
+
+}
+.messages-container::-webkit-scrollbar {
+  display: none;
+}
+.chat-launch-button{
+  color: #ffffffca;
+    font-size:15px;
+}
+/* 消息样式 */
+.message {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+      font-size: 15px;
+
+}
+.chat-dialog-wrapper{
+  height: 100%;
+  background: #1a1a1a98;
+}
+.message-sender {
+  font-weight: bold;
+  margin-right: 8px;
+  color: var(--theme-color);
+}
+
+.message.bot .message-content {
+        color: #fff;
+}
+
+.message.user .message-content {
+  color: #40e0d0;
+}
+
+/* 选项容器 */
+.options-container {
+  padding: 10px 10px 40px 10px ;
+  border-top: 1px solid var(--border-color);
+  background: #1a1a1a98;
+  bottom: 20px;
+}
+
+/* 选项项样式 */
+.option-item {
+  padding: 4px 0;
+  cursor: pointer;
+      font-size: 15px;
+  color: #40e0d0;
+}
+
+.option-item:hover {
+  text-decoration: underline;
+}
+
+/* 深色模式适配 */
+.dark .option-item {
+  color: #40e0d0;
+}
+
+
+.close-dialog-button:hover {
+  color: var(--theme-color);
+}
+/* 聊天控制图片样式 */
+.start-image-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 35vh;
+  height:45vh;
+  background-image: url(/images/logo/start.png) ;
+   background-repeat:no-repeat;
+   background-size:35vh 45vh;
+}
+
+.me-image-container {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: 60vh;
+  height: 80vh;
+  cursor: pointer;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-size: 60vh 80vh;
+}
+.markdown-content a{
+  color: #1565C0;
+}
+@media (max-width: 2600px) { 
+  .start-image-container {
+  position: absolute;
+  bottom: -50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 35vh;
+  height:45vh;
+  background-image: url(/images/logo/start.png) ;
+   background-repeat:no-repeat;
+   background-size:35vh 45vh;}
+}
+@media (max-width: 2000px) { 
+    .start-image-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 35vh;
+  height:45vh;
+  background-image: url(/images/logo/start.png) ;
+   background-repeat:no-repeat;
+   background-size:35vh 45vh;
+}
+}
+@media (max-width: 1500px) { 
+  .start-image-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 35vh;
+  height:45vh;
+  background-image: url(/images/logo/start.png) ;
+   background-repeat:no-repeat;
+   background-size:35vh 45vh;}
+   .me-image-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 45vh;
+  height:60vh;
+  cursor: pointer;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-size: 45vh 60vh;
+}
+
+}
+@media (max-width: 768px) { 
+  .start-image-container {
+  position: absolute;
+  left: 50%;
+  bottom:52vh;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 17.5vh;
+  height:22.5vh;
+  background-image: url(/images/logo/start.png) ;
+   background-repeat:no-repeat;
+   background-size:17.5vh 22.5vh;
+}
+  .me-image-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30vh;
+  height: 40vh;
+  cursor: pointer;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-size: 30vh 40vh;
+}
+.markdown-content{
+  width: 100%;
+}
+}
+
+.chat-control-image {
+  transition: transform 0.2s;
+}
+
+.chat-control-image:hover {
+  transform: scale(1.1);
+}
+
+.chat-dialog-wrapper {
+  height: calc(100% - 5vh);
+  background: #1a1a1a98;
+  position: relative;
+  padding-top: 1vh;
+  
+}
+
+
+
+
+
+/*导航栏*/
+.nav {
+  display: flex;
+  /* padding: 10px 20px; */
+  box-shadow: 0px 0px 5px 0px var(--shadow-color);
+  background-color: var(--bg-color);
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav h1{
+  display: flex;
+  width: 100%;
+  margin: 0.67em 0.3em;
+  justify-content: space-between;
+}
+
+
+/* Logo容器样式 */
+.logo-container {
+  cursor: pointer;
+  margin: 5px;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+/* 不同Logo样式的特定样式 */
+.logo-style-2 {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+}
+
+.dark-mode .logo-style-2 {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+.logo-style-3 {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .logo-style-3 {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/*导航栏除logo外部分*/
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  gap: 15px;
+}
+
+/*主页面大区域*/
+.areas{
+  border-top:  var(--theme-color) 3px solid; 
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+/*标签们*/
+/*标签过滤器*/
+.tags-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag-button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.tag-button.active {
+  background:  var(--theme-color); 
+  color: white;
+}
+.Links {
+  text-decoration: none
+}
+.Links:hover{
+  text-decoration: underline var(--theme-color)
+}
+/*艺术家卡片布局*/
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  transform-origin: center top; 
+}
+
+/*艺术家卡片框*/
+.article-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/*艺术家卡片内容*/
+.article-content {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/*艺术家卡片文本(父)*/
+.article-text {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/*艺术家卡片图片*/
+.article-image {
+  width: 140px;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+/*艺术家卡片跳转*/
+.article-link{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+/*艺术家卡片标签布局*/
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: auto;
+}
+
+/*艺术家卡片标签*/
+.tag {
+  padding: 2px 4px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 4px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-right:5px ;
+}
+
+.tag:hover {
+  opacity: 0.8;
+}
+
+/*艺术家卡片文本-标题*/
+.article-title {
+  font-size: 1.25rem;
+  margin: 0;
+  color:  var(--theme-color); 
+  line-height: 1.3;
+}
+
+/*艺术家卡片文本-日期*/
+.article-date {
+  color: var(--secondary-text);
+  font-size: 0.80rem;
+}
+
+/*艺术家卡片文本-摘录*/
+.article-excerpt {
+  color: var(--text-color);
+  margin-bottom: 2px;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin-top:0 ;
+  height: 100%;
+}
+
+/*艺术家卡片图片*/
+.cover-image {
+  object-fit: cover;
+}
+
+/* 显示更多按钮区 */
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* 显示更多按钮 */
+.show-more-button {
+  background-color:  var(--theme-color); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin: 0 20px;
+  padding: 8px 16px;
+}
+
+.show-more-button:hover {
+  background-color: #e05a5a; 
+}
+
+/* 搜索页 */
+.search-title{
+  color:  var(--theme-color); 
+}
+
+.results-title{
+  color:  var(--theme-color); 
+  margin:10px 0;
+}
+
+.search-form{
+  display: flex;
+}
+
+/* 专栏 */
+.column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.column-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+/*主题选择等*/
+.theme-indicator,
+.themeSwitcher,
+.pickerButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 25px;
+}
+
+.themeSwitcher, .pickerButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/*艺术家详情页*/
+.artist-detail {
+  padding:20px 40px;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.artist-detail h1{
+  margin: 0;
+  color:  var(--theme-color); 
+}
+
+.artist-detail h3{
+  border-bottom:  var(--theme-color) dashed 2px;  
+}
+
+.artist-detail h4{
+  color:  var(--theme-color); 
+}
+
+.artist-detail p{
+  margin: 0;
+}
+
+.artist-detail button{
+  margin-top: 20px;
+}
+
+.artist-detail img{
+  display:inline;
+  margin:0 5px;
+  height: 50px;
+}
+.artist-first{
+  display: flex;
+}
+.artist-hero {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.artist-detail.terkoiz-special h1,
+.artist-detail.terkoiz-special h4 {
+  color: #40e0d0 !important;
+}
+
+.artist-detail.terkoiz-special h3 {
+  border-bottom: #40e0d0 dashed 2px !important;
+}
+
+/*其他页面*/
+.other{
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.other a{
+  margin-right:10px ;
+}
+
+.other a:hover{
+  color:  var(--theme-color); 
+}
+
+/*有趣专栏详情页*/
+/*专栏主页卡片*/
+.column-cards{
+  border: var(--border-color) 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.column-container {
+  align-items: start;
+  padding:20px 40px;
+  max-width: 60%;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  width: 300px;
+  border-left: 1px solid #eee;
+  transition: all 0.3s ease;
+  padding: 120px 20px 20px 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background: var(--card-bg);
+}
+
+.sidebar h3{
+  position: fixed;
+  background: var(--card-bg);
+  margin: 5px 0;
+}
+
+/*内容*/
+.content {
+  flex: 1;
+  right: 300px;
+}
+.content img{
+  width: 50%;
+}
+/*专栏导航栏*/
+.toc {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0 0;
+}
+
+.toc li {
+  margin-bottom: 10px;
+}
+
+/*toc里序号卡片*/
+.column-card {
+  display: flex;
+  justify-content: start;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  height: 3vh;
+}
+
+.column-card:hover {
+  background-color: #f5f5f5;
+}
+
+/*朋友页*/
+/*布局*/
+.frienddd{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  margin: 0 0 10px 0;
+}
+
+/*卡片*/
+.friends{
+  display: flex;
+  justify-content: start;
+  background-color: #FF216710;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.friends p{
+  background-color: #FF216750;
+  border-radius: 5px;
+  font-size: 10px;
+  padding:3px 7px;
+  margin: 0;
+  align-self: start;
+}
+
+/*名字和称号*/
+.fr{
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  margin:0 10px 0 0;
+  align-self: start;
+}
+
+/*详情介绍(父)*/
+.frr{
+  color:  var(--theme-color); 
+  font-size:10px;
+}
+
+/*详情客观(子)*/
+.frrr{
+  color: var(--text-color);
+}
+
+@media(max-width: 768px){
+  .main-content {
+  padding:20px;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  z-index: 99;
+  position: relative;
+  background-color: var(--bg-color);
+}
+.nav-right-2{
+  display: flex;
+  flex-direction: column;
+
+}
+  .nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+  }
+  .nav h1{
+    font-size: 25px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .home-button{
+    font-size: 23px;
+margin: 3px;
+  }
+  .ichat{
+    height: 5vh;
+  }
+.ichat.expanded {
+  width: 100%;
+  height: 50vh;
+}
+.option-item {
+  padding: 4px 0;
+  cursor: pointer;
+      font-size: 12px;
+  color: #40e0d0;
+}
+.message {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+      font-size: 12px;
+
+}
+.main-content{
+ width: 100%;
+  font-size: 15px;
+}
+.message-sender {
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 10px;
+  color: var(--theme-color);
+}
+.show-more-button {
+  background-color:  var(--theme-color); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size:0.8rem;
+  transition: background-color 0.3s ease;
+  margin: 0 10px;
+  padding: 4px 8px;
+}
+
+.show-more-button:hover {
+  background-color: #00000000; 
+  color:var(--theme-color);
+}
+.other{
+  display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+ font-size: 10px;
+ justify-items:center
+}
+.frienddd{
+  display: grid;
+  grid-template-columns: 100%
+}
+.sidebar {
+  font-size: 20px;
+  width: 99%;
+  height: 30%;
+  position: fixed;
+  padding: 10px;
+  bottom: 0;         
+  left: 0;           
+  top: auto;        
+}
+.toc li {
+  margin-right: 10px;
+  width: 95%;
+}
+.column-container {
+
+padding: 20px;
+  width:100%;
+  max-width: 100%;
+
+}
+}

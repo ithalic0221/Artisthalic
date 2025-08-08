@@ -1,0 +1,9 @@
+/* styles/ThemeSwitcher.module.css */
+
+.themeSwitcher {
+  transition: transform 0.2s;
+}
+
+.themeSwitcher:hover {
+  transform: scale(1.1);
+}
